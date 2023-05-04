@@ -4,16 +4,14 @@ const { routerHandleResult } = require('../routerHandleResult');
 const url = require('url');
 
 function handle(request, response) {
-
   if (urlPathOf(request) !== '/contacts') {
     return routerHandleResult.NO_URL_PATH_MATCH;
   }
-  
+
   if (request.method == 'GET') {
-  
     // parse the url
     const parsedUrl = url.parse(request.url, true);
-    console.log(parsedUrl.params)
+    console.log(parsedUrl.params);
     const { name, limit } = parsedUrl.query;
     // const {query, limit} = request.query;
     let contacts = fakeDatabase.selectAllFromContacts();
